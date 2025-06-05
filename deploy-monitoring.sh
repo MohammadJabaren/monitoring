@@ -32,6 +32,11 @@ sudo docker network inspect monitoring-net >/dev/null 2>&1 || docker network cre
 sudo docker pull prom/prometheus
 sudo docker pull grafana/grafana
 
+sudo docker stop prometheus || true
+sudo docker rm prometheus || true
+
+sudo docker stop grafana || true
+sudo docker rm grafana || true
 
 sudo docker run -d \
   --name prometheus \
