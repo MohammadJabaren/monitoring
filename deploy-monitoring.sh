@@ -27,22 +27,22 @@ if ! command -v docker &> /dev/null; then
   exit 1
 fi
 
-docker network inspect monitoring-net >/dev/null 2>&1 || docker network create monitoring-net
+sudo docker network inspect monitoring-net >/dev/null 2>&1 || docker network create monitoring-net
 
-docker pull prom/prometheus
-docker pull grafana/grafana
+sudo docker pull prom/prometheus
+sudo docker pull grafana/grafana
 
-docker rm -f prometheus || true
-docker rm -f grafana || true
+sudo docker rm -f prometheus || true
+sudo docker rm -f grafana || true
 
-docker run -d \
+sudo docker run -d \
   --name prometheus \
   --network monitoring-net \
   -p 9090:9090 \
   -v $(pwd)/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml \
   prom/prometheus
 
-docker run -d \
+sudo docker run -d \
   --name grafana \
   --network monitoring-net \
   -p 3000:3000 \
