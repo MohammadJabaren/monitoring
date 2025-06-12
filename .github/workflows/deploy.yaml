@@ -75,6 +75,6 @@ jobs:
             fi
 
             echo 'Starting Docker Compose services...'
-            sudo docker compose -f docker-compose.monitoring.yaml pull
-            sudo docker compose -f docker-compose.monitoring.yaml up -d
+            sudo docker compose -f ./monitoring/docker-compose.monitoring.yaml pull
+            sudo docker compose -f ./monitoring/docker-compose.monitoring.yaml up -d
           "
