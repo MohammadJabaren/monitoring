@@ -75,6 +75,7 @@ jobs:
             fi
 
             echo 'Starting Docker Compose services...'
+            sudo cp ./monitoring/prometheus/prometheus.yaml /home/ubuntu
             sudo docker compose -f ./monitoring/docker-compose.monitoring.yaml pull
             sudo docker compose -f ./monitoring/docker-compose.monitoring.yaml up -d
           "
